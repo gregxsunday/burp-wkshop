@@ -16,22 +16,22 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link {% if nav == 'setup' %}active{% endif %}" href="/">Setting up proxy<span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Proxy - HTTP history<span class="sr-only"></span></a>
+                <li class="nav-item">
+                    <a class="nav-link {% if nav == 'history' %}active{% endif %}" href="/">Proxy - HTTP history<span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Proxy - Intercept<span class="sr-only"></span></a>
+                <li class="nav-item">
+                    <a class="nav-link {% if nav == 'intercept' %}active{% endif %}" href="/">Proxy - Intercept<span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Repeater<span class="sr-only"></span></a>
+                <li class="nav-item">
+                    <a class="nav-link {% if nav == 'repeater' %}active{% endif %}" href="/">Repeater<span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Intruder<span class="sr-only"></span></a>
+                <li class="nav-item">
+                    <a class="nav-link {% if nav == 'intruder' %}active{% endif %}" href="/">Intruder<span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Decoder<span class="sr-only"></span></a>
+                <li class="nav-item">
+                    <a class="nav-link {% if nav == 'decoder' %}active{% endif %}" href="/">Decoder<span class="sr-only"></span></a>
                 </li>
               </ul>
             </div>
