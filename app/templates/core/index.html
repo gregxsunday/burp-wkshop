@@ -17,6 +17,21 @@
 
     <h3>Konfiguracja FoxyProxy</h3>
 
+    <div>
+        <ol>
+            <li>Kliknij na ikonę FoxyProxy i wybierz <i>Options</i></li>
+            <li>Kliknij <i>Add new Proxy</i></li>
+            <li>W zakładce <i>General</i> wpisz nazwę proxy <i>burp</i></li>
+            <li>W zakładce <i>Proxy Details</i> wybierz <i>Manual Proxy Configuration</i> i wpisz adres proxy 127.0.0.1 i port 8080. Pole <i>SOCKS proxy</i> <b>nie</b> powinno być zaznaczone.
+            <img src="{{ url_for('static', filename='img/proxy_details.png' ) }}" class="img-fluid w-50 mx-3 px-3" alt="Proxy Details"><br><br></li>
+            <li>W zakładce <i>URL patterns</i> Wybierz <i>Add new pattern</i></li>
+            <li>Wypełnij <i>Pattern Name: localhost</i> a w polu <i>URL pattern</i> wpisz <i>*localtest.me*</i>
+            <img src="{{ url_for('static', filename='img/proxy_pattern.png' ) }}" class="img-fluid w-35 mx-3 px-3" alt="Proxy Details"><br><br></li>
+            <li>Upewnij się, że zaznaczone są opcje <i>Whitelist</i> oraz <i>Wildcards</i> i zapisz pattern</li>
+            <li>Kliknij na ikonę FoxyProxy i wybierz opcję <i>Use proxies based on their pre-defined patterns and priorities</i></li>
+        </ol>
+    </div>
+
     <h3>Zainstalowanie certyfikatu</h3>
 </div>
 
