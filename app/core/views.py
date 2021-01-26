@@ -6,5 +6,4 @@ mod = Blueprint('core', __name__)
 
 @mod.route('/')
 def index():
-  repository = Repository()
-  return (render_template('core/index.html', resources=repository.getResources()))
+  return (render_template('core/index.html', nav='setup'))

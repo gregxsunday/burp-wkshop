@@ -1,13 +1,23 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<h1>Hello World</h1>
 
-<h2>Some useful resources</h2>
-<ul>
-{% for r in resources %}
-    <li><a href="{{ r.address }}" target="blank">{{ r.name }}</a></li>
-{% endfor %}
-</ul>
+<div class="mx-3 px-3">
+    <h1>Ustawienie proxy</h1>
+    
+    <h3>Instalacja dodatku do przeglądarki FoxyProxy</h3>
+
+    <div>
+        <ol>
+            <li>Przejdź na stronę <a href='https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp?hl=en'>FoxyProxy Standard</a> w chrome web store i dodaj dodatek do przeglądarki</li>
+            <li>Kliknij ikonę puzzla obok ikony profilu i przypnij FoxyProxy do widocznych dodatków. Dodatek powinien być widoczny tak jak na obrazku poniżej.</li>
+        </ol>
+        <img src="{{ url_for('static', filename='img/extensions.png' ) }}" class="img-fluid w-25 mx-3 px-3" alt="Extensions"><br><br>
+    </div>
+
+    <h3>Konfiguracja FoxyProxy</h3>
+
+    <h3>Zainstalowanie certyfikatu</h3>
+</div>
 
 {% endblock %}
