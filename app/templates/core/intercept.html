@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+
+<div class="mx-3 px-3">
+    <h1>Proxy - Intercept</h1>
+    
+    <div>
+        W tym zadaniu zapoznasz się z możliwością przechwytywania żądań w locie - narzędzie Burp Suite pozwala Ci zmodyfikować żądanie już po tym, kiedy opuściło przeglądarkę. 
+        
+        <ol>
+            <li>Otwórz zakładkę <i>Proxy</i> > <i>Intercept</i></li>
+            <li>Kliknij przycisk <i>Intercept is off</i></li>
+            <li>Kliknij przycisk na stronie, aby wysłać żądanie. <button id='btn' type='button'>Wyślij żądanie</button></li>
+            <li>W oknie Burpa powinieneś zobaczyć to żądanie. Przeanalizuj je i zmień odpowiedni parametr tak, aby dostać flagę.</li>
+            <li>Wyślij żądanie klikając <i>Forward</i> lub używając skrótu klawiszowego CMD+F lub CTRL+F</li>
+            <li>Wyłącz przechwytywanie przyciskiem <i>Intercept is on</i> i przejdź do okna HTTP history. Podejrzyj odpowiedź na to żądanie. Jeżeli wszystko wykonałeś/wykonałaś prawidłowo to w odpowiedzi znajduje się druga flaga.</li>
+        </ol>
+    </div>
+</div>
+
+<script>
+    function send_request(){
+        console.log('request');
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', window.location);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr.send('i_want_the_flag=no');
+    }
+
+    window.btn.onclick = send_request;
+</script>
+
+{% endblock %}

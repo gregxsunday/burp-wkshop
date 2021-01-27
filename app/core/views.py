@@ -5,7 +5,8 @@ from app.core.repository import *
 mod = Blueprint('core', __name__)
 
 flags = {
-  'history': r'msfi{123}'
+  'history': r'msfi{123}',
+  'intercept': r'msfi{456}'
 }
 
 @mod.route('/')
@@ -19,3 +20,13 @@ def history2():
 @mod.route('/history')
 def history():
   return (render_template('core/history.html', nav='history'))
+
+@mod.route('/intercept', methods=['GET','POST'])
+def intercept():
+  if request.method == 'POST':
+    if request.form['i_want_the_flag'] == 'yes':
+      return f'<html>{flags["intercept"]}</html>'
+    else:
+      return f'<html>no flag for you</html>'
+  else:
+    return (render_template('core/intercept.html', nav='intercept'))
