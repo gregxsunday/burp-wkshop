@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+<script>
+    window.onload = function (){
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', "{{url_for('core.history2')}}");
+        xhr.send();
+    }
+</script>
+
+<div class="mx-3 px-3">
+    <h1>Proxy - HTTP history</h1>
+    <div>
+        W tym zadaniu zapoznasz się z historią żądań i odpowiedzi HTTP, wysyłanych podczas wyświetlania tej strony. Twoim zadaniem jest znaleznienie flagi w tej właśnie historii. Flaga to ciąg znaków, wyglądający tak: <code>msfi{53671704ab5d164ca94f31719dc6d83e329bd206}</code> - część <i>msfi</i> oraz nawiasy będą takie same w każdej fladze, podczas gdy zawartość będzie inna.<br><br>
+
+        Przejrzyj żądania wysyłane podczas odświeżania tej strony i spróbuj znaleźć flagę.
+
+    </div>
+
+</div>
+
+{% endblock %}
