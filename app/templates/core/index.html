@@ -26,9 +26,12 @@
             <img src="{{ url_for('static', filename='img/proxy_details.png' ) }}" class="img-fluid w-50 mx-3 px-3" alt="Proxy Details"><br><br></li>
             <li>W zakładce <i>URL patterns</i> Wybierz <i>Add new pattern</i></li>
             <li>Wypełnij <i>Pattern Name: localhost</i> a w polu <i>URL pattern</i> wpisz <i>*localtest.me*</i>
-            <img src="{{ url_for('static', filename='img/proxy_pattern.png' ) }}" class="img-fluid w-35 mx-3 px-3" alt="Proxy Details"><br><br></li>
+            <img src="{{ url_for('static', filename='img/proxy_pattern.png' ) }}" class="img-fluid w-35 mx-3 px-3" alt="Proxy Pattern"><br><br></li>
             <li>Upewnij się, że zaznaczone są opcje <i>Whitelist</i> oraz <i>Wildcards</i> i zapisz pattern</li>
             <li>Kliknij na ikonę FoxyProxy i wybierz opcję <i>Use proxies based on their pre-defined patterns and priorities</i></li>
+            <li>Odśwież tą stronę i zobacz, czy wyświetla się w zakładce <i>Proxy</i> > <i>HTTP history</i>
+            <img src="{{ url_for('static', filename='img/proxy.png' ) }}" class="img-fluid w-35 mx-3 px-3" alt="Request visible in proxy"><br><br></li>
+            <li>Jeżeli tak, to środowisko jest skonfigurowane poprawnie, jeżeli nie, upewnij się, że wszystkie ustawienia są zgodne z instrukcją. W razie problemów, poproś prowadzących o pomoc.</li>
         </ol>
     </div>
 
