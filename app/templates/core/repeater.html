@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="mx-3 px-3">
+    <h1>Repeater</h1>
+    <div>
+        To zadanie będzie nieco podobne do poprzedniego. Również musisz zmodyfikować w Burpie żądanie wysyłane przez przeglądarkę. Tym razem jednak, musisz zmienić nie tylko wartość parametru, ale również:
+        <ol>
+            <li>metodę HTTP z <i>POST</i> na <i>PUT</i></li>
+            <li>adres z <i>/repeater</i> na <i>/repeater.json</i></li>
+            <li>typ wysyłanych danych ze zwykłego zakodowanego formularza na JSONa</li>
+            <li>wartość parametru key to liczba 1, 2, 3, 4, 5, 6 lub 7 - musisz wysłać kilka żadań, próbując kilka z podanych liczb</li>
+        </ol> 
+        To zadanie dałoby się zrobić w sposób z poprzedniego zadania tj. przechwytując w locie wysłane żądanie, jednak wielokrotne wprowadzanie tych modyfikacji nie jest konieczne, dlatego do wykonania tego zadania wykorzystamy zakładkę <i>Repeater</i>
+        <ol>
+            <li>Kliknij przycisk na stronie, aby wysłać żądanie. <button id='btn' type='button'>Wyślij żądanie</button></li>
+            <li>Upewnij się, że opcja <i>Intercept</i> z poprzedniego zadania jest wyłączona i jesteś w stanie zobaczyć żądanie do <i>/repeater</i> w historii żądań.</li>
+            <li>Kliknij prawym przyciskiem myszy na to żądanie i wybierz <i>Send to repeater</i></li>
+            <li>Przejdź teraz do zakładki <i>Repeater</i>. Możesz stąd wielokrotnie wysyłać to samo żądanie, modyfikować je i obserwować różnice w odpowiedziach. Żądania w protokole HTTP/1.1 są w formie teksowej, więc możesz je edytować do woli, ale ma to też złe strony - Burp Suite nie wstrzyma Cię przed wysyłaniem niepoprawnego żądania.</li>
+            <li>Teraz zacznij modyfikować to żądanie tak, aby spełniało warunki wypisane wyżej. W pierwszej kolejności zmień metodę z POST na PUT.</li>
+            <li>Zmień adres z <i>/repeater</i> na <i>/repeater.json</i></li>
+            <li>Zmień formę wysłanego parametru na JSONa. Powinien on wyglądać tak: <code>{ "key": 0}</code></li>
+            <li>Zmieniając formę wysyłanych parametrów należy też poinformować o tym serwer. Wykorzystuje się do tego nagłówek <code>Content-Type</code>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types">MIME Type</a> odpowiadający JSONowi to <code>application/json</code></li>
+            <li>Wyślij żądanie kilka razy, próbując różne wartości parametru <i>key</i>. Dzięki wykorzystaniu tego narzędzia, poprzednie modyfikacje zostały zachowane.</li>
+        </ol>
+
+    </div>
+
+</div>
+
+<script>
+    function send_request(){
+        console.log('request');
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', window.location);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr.send('key=0');
+    }
+
+    window.btn.onclick = send_request;
+</script>
+
+{% endblock %}
