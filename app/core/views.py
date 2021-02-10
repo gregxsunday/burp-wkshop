@@ -83,13 +83,18 @@ def intruder_json():
   else:
     return jsonify({'error':'Bad method my friend'}), 405
 
-@mod.route('/decoder')
-def decoder():
-  flag = flags['decoder']
+def encode_flag(flag):
   flag = quote_plus(flag)
   flag = b64encode(flag.encode('utf8'))
   flag = str(flag)[2:-1]
   flag = ''.join(list(map(lambda x: hex(ord(x))[2:], flag)))
   flag = b64encode(flag.encode('utf8'))
   flag = str(flag)[2:-1]
+  return flag
+
+
+@mod.route('/decoder')
+def decoder():
+  flag = flags['decoder']
+  flag = encode_flag(flag)
   return (render_template('core/decoder.html', nav='decoder', flag=flag))
