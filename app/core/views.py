@@ -7,7 +7,8 @@ mod = Blueprint('core', __name__)
 flags = {
   'history': r'msfi{123}',
   'intercept': r'msfi{456}',
-  'repeater': r'msfi{789}'
+  'repeater': r'msfi{789}',
+  'intruder': r'msfi{0ab}'
 }
 
 @mod.route('/')
@@ -43,8 +44,32 @@ def repeater_json():
       req = request.get_json()
       try:
         key = req['key']
+        # TODO key z enva
         if key == 5:
           return jsonify({'flag': flags['repeater']})
+        else:
+          return jsonify({'error':'this is not the correct key my friend'})
+      except KeyError:
+        return jsonify({'error':'I want the key in the JSON my friend'}), 400
+    else:
+      return jsonify({'error':'I want JSON my friend'}), 400
+  else:
+    return jsonify({'error':'Bad method my friend'}), 405
+
+@mod.route('/intruder')
+def intruder():
+  return (render_template('core/intruder.html', nav='intruder'))
+
+@mod.route('/intruder.json', methods=['GET', 'POST', 'PUT'])
+def intruder_json():
+  if request.method == 'PUT':
+    if request.is_json:
+      req = request.get_json()
+      try:
+        key = req['key']
+        # TODO key z enva
+        if key == 2:
+          return jsonify({'flag': flags['intruder']})
         else:
           return jsonify({'error':'this is not the correct key my friend'})
       except KeyError:

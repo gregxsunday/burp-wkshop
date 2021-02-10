@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="mx-3 px-3">
+    <h1>Intruder</h1>
+    <div>
+        To zadanie będzie bardzo podobne do poprzedniego. Z tą różnicą, że zamiast 7 liczb do przetestowania musisz sprawdzić 30. Możesz oczywiście wysłać tyle żądań repeaterem, ale szybciej i wygodniej będzie zrobić to samo używając zakładki <i>Intruder</i>.<br>
+        Dla przypomnienia, musisz zmienić:
+        <ol>
+            <li>metodę HTTP z <i>POST</i> na <i>PUT</i></li>
+            <li>adres z <i>/intruder</i> na <i>/intruder.json</i></li>
+            <li>typ wysyłanych danych ze zwykłego zakodowanego formularza na JSONa</li>
+            <li>wartość parametru key to liczba 0-30 - musisz wysłać kilka żadań, próbując kilka z podanych liczb</li>
+        </ol> 
+        Poniżej instrukcja krok po kroku, jak użyć do tego zakładki <i>Intruder</i>
+        <ol>
+            <li>Kliknij przycisk na stronie, aby wysłać żądanie. <button id='btn' type='button'>Wyślij żądanie</button></li>
+            <li>Upewnij się, że opcja <i>Intercept</i> z poprzedniego zadania jest wyłączona i jesteś w stanie zobaczyć żądanie do <i>/intruder</i> w historii żądań.</li>
+            <li>Kliknij prawym przyciskiem myszy na to żądanie i wybierz <i>Send to intruder</i></li>
+            <li>Przejdź teraz do zakładki <i>Intruder</i>. Służy ono do tego, aby wysłać wiele różnych wartości parametrów (payloadów) i obserwować różnice w odpowiedziach. Żądania możesz edytować tak samo, jak w zakładce <i>Repeater</i>.</li>
+            <li>Przejdź do zakładki <i>Positions</i> (na najniższym poziomie nawigacji). Zacznij modyfikować to żądanie tak, aby spełniało warunki wypisane wyżej (oprócz wartości parametru - nią zajmiemy się zaraz). W razie konieczności wróć do instrukcji ćwiczenia z  <i>Repeaterem</i></li>
+            <li>Teraz czas wskazać narzędziu, w którym miejscu żądania chcemy mieć nasze dane. W tym celu po prawej stronie kliknij przycisk <i>Clear §</i>, a następnie zaznacz miejsce, w którym ma być wartość parametru <code>key</code> i kliknij <i>Add §</i>. Końcówka żądania powinna wyglądać jak na obrazku. Znaki § powinny być tylko wokół tego jednego miejsca.<br>
+            <img src="{{ url_for('static', filename='img/intruder.png' ) }}" class="img-fluid w-25 mx-3 px-3" alt="Intruder"></li>
+            <li>Teraz z zakładki <i>Positions</i> przejdź do <i>Payloads</i>. Jako <i>Payload type</i> wybierz <i>Numbers</i> i wpisz odpowiednie wartości <i>Number range</i></li>
+            <li>Po zrobieniu tego, możesz kliknąć <i>Start attack</i>, kliknąć OK na okienku z informacją o wersji Community i poszukać flagi w liście odpowiedzi.</li>
+        </ol>
+
+    </div>
+
+</div>
+
+<script>
+    function send_request(){
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', window.location);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr.send('key=0');
+    }
+
+    window.btn.onclick = send_request;
+</script>
+
+{% endblock %}
