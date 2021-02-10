@@ -2,13 +2,17 @@ from flask import Blueprint, request, render_template, flash, g, session, redire
                   abort, jsonify
 from app.core.repository import *
 
+from base64 import b64encode 
+from urllib.parse import quote_plus
+
 mod = Blueprint('core', __name__)
 
 flags = {
   'history': r'msfi{123}',
   'intercept': r'msfi{456}',
   'repeater': r'msfi{789}',
-  'intruder': r'msfi{0ab}'
+  'intruder': r'msfi{0ab}',
+  'decoder': r'msfi{cde}'
 }
 
 @mod.route('/')
@@ -78,3 +82,14 @@ def intruder_json():
       return jsonify({'error':'I want JSON my friend'}), 400
   else:
     return jsonify({'error':'Bad method my friend'}), 405
+
+@mod.route('/decoder')
+def decoder():
+  flag = flags['decoder']
+  flag = quote_plus(flag)
+  flag = b64encode(flag.encode('utf8'))
+  flag = str(flag)[2:-1]
+  flag = ''.join(list(map(lambda x: hex(ord(x))[2:], flag)))
+  flag = b64encode(flag.encode('utf8'))
+  flag = str(flag)[2:-1]
+  return (render_template('core/decoder.html', nav='decoder', flag=flag))
