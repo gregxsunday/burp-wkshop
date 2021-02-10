@@ -8,6 +8,9 @@ def client():
     with app.test_client() as client:
         yield client
 
+with open('conf.json', 'r') as infile:
+    key = json.loads(infile.read())["keys"]["intruder"]
+
 def test_bad_method(client):
     resp = client.get('/intruder.json')
     assert resp.status_code == 405
@@ -24,7 +27,8 @@ def test_bad_form(client):
     assert b'msfi{' not in resp.data 
 
 def test_bad_key(client):
-    d = {'key': 1}
+    bad_key = ( key + 1) % 7
+    d = {'key': bad_key}
     headers = {
         'Content-Type': 'application/json'
     }
@@ -42,7 +46,7 @@ def test_json_without_key(client):
     assert b'msfi{' not in resp.data 
 
 def test_valid_request(client):
-    d = {'key': 2}
+    d = {'key': key}
     headers = {
         'Content-Type': 'application/json'
     }

@@ -4,16 +4,27 @@ from app.core.repository import *
 
 from base64 import b64encode 
 from urllib.parse import quote_plus
+import json
 
 mod = Blueprint('core', __name__)
 
-flags = {
-  'history': r'msfi{123}',
-  'intercept': r'msfi{456}',
-  'repeater': r'msfi{789}',
-  'intruder': r'msfi{0ab}',
-  'decoder': r'msfi{cde}'
-}
+with open('conf.json', 'r') as infile:
+  conf = json.loads(infile.read())
+  flags = conf['flags']
+  keys = conf['keys']
+
+# flags = {
+#   'history': r'msfi{123}',
+#   'intercept': r'msfi{456}',
+#   'repeater': r'msfi{789}',
+#   'intruder': r'msfi{0ab}',
+#   'decoder': r'msfi{cde}'
+# }
+
+# keys = {
+#   'repeater': 2,
+#   'intruder': 2
+# }
 
 @mod.route('/')
 def index():
@@ -48,8 +59,7 @@ def repeater_json():
       req = request.get_json()
       try:
         key = req['key']
-        # TODO key z enva
-        if key == 5:
+        if key == keys['repeater']:
           return jsonify({'flag': flags['repeater']})
         else:
           return jsonify({'error':'this is not the correct key my friend'})
@@ -71,8 +81,7 @@ def intruder_json():
       req = request.get_json()
       try:
         key = req['key']
-        # TODO key z enva
-        if key == 2:
+        if key == keys['repeater']:
           return jsonify({'flag': flags['intruder']})
         else:
           return jsonify({'error':'this is not the correct key my friend'})

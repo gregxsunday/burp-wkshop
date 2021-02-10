@@ -1,0 +1,13 @@
+{
+    "flags": {
+        "history": "msfi{123}",
+        "intercept": "msfi{456}",
+        "repeater": "msfi{789}",
+        "intruder": "msfi{0ab}",
+        "decoder": "msfi{cde}"
+  },
+  "keys": {
+        "repeater": 2,
+        "intruder": 2
+  }
+}
