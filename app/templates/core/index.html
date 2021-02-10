@@ -35,7 +35,20 @@
         </ol>
     </div>
 
-    <h3>Zainstalowanie certyfikatu</h3>
+    <h3>Zainstalowanie certyfikatu*</h3>
+    <div>
+        Instalowanie certyfikatu nie będzie wymagane do wykonywania naszych zadań, ale będzie konieczne do pracy z prawdziwymi stronami. Dlatego też, jest to zadanie "z gwiazdką", dla chętnych.
+        <ol>
+            <li>Dodaj nowy URL pattern do FoxyProxy <code>*burpsuite*</code></li>
+            <li>Kliknij na napis <i>CA Certificate</i> i zapisz na dysku pobrany certyfikat</li>
+            <li>Nastepnie przejdź do odpowiedniego linku ze strony producenta narzędzia Burp Suite:<ul>
+                <li><a href="https://portswigger.net/burp/documentation/desktop/getting-started/proxy-setup/certificate/firefox">Installing Burp's CA certificate in Firefox</a></li>
+                <li><a href="https://portswigger.net/burp/documentation/desktop/getting-started/proxy-setup/certificate/chrome">Burp's CA certificate in Chrome</a></li>
+                <li><a href="https://portswigger.net/burp/documentation/desktop/getting-started/proxy-setup/certificate/safari">Installing Burp's CA certificate in Safari</a></li>
+            </ul></li>
+            <li>Aby sprawdzić poprawność konfiguracji, zaznacz na chwilę w FoxyProxy <i>Use burp for all URLs</i> i odśwież jakąś stronę wykorzystującą protokół https. Jeżeli wszystko jest ustawione dobrze, w przeglądarce nie zobaczysz ostrzeżenia o niebezpiecznym połączeniu, a w historii Burp Suite zobaczysz żądania do tej strony.</li>
+        </ol>
+    </div>
 </div>
 
 {% endblock %}
