@@ -1,13 +1,13 @@
 {
     "flags": {
-        "history": "msfi{123}",
-        "intercept": "msfi{456}",
-        "repeater": "msfi{789}",
-        "intruder": "msfi{0ab}",
-        "decoder": "msfi{cde}"
+        "history": "msfi{i_am_such_a_h4xxor}",
+        "intercept": "msfi{js_validation_no_longer_a_thing}",
+        "repeater": "msfi{with_this_knowledge_time_to_hack_alibcia}",
+        "intruder": "msfi{but_with_this_knowledge_time_to_hack_pentagon}",
+        "decoder": "msfi{decoding_no_good_encryption_better}"
   },
   "keys": {
-        "repeater": 2,
-        "intruder": 2
+        "repeater": 4,
+        "intruder": 19
   }
 }

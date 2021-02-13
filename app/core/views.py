@@ -81,7 +81,7 @@ def intruder_json():
       req = request.get_json()
       try:
         key = req['key']
-        if key == keys['repeater']:
+        if key == keys['intruder']:
           return jsonify({'flag': flags['intruder']})
         else:
           return jsonify({'error':'this is not the correct key my friend'})
